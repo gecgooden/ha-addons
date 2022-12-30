@@ -7,12 +7,11 @@ arch:
   - armv7
   - amd64
 init: false
-# host_pid: true
-apparmor: true
 auth_api: true
 hassio_api: true
 homeassistant_api: true
 hassio_role: admin
+image: "ghcr.io/gecgooden/{arch}-grafana-agent"
 schema:
   remote_write_url: str
   remote_write_username: str
