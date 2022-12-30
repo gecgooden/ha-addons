@@ -1,0 +1,23 @@
+metrics:
+  wal_directory: /tmp/wal
+  global:
+    remote_write:
+      - url: ${REMOTE_WRITE_URL}
+        basic_auth:
+          username: ${REMOTE_WRITE_USERNAME}
+          password: ${REMOTE_WRITE_PASSWORD}
+
+  configs:
+    - name: default
+      scrape_configs:
+        - job_name: home_assistant
+          metrics_path: /core/api/prometheus
+          authorization:
+            credentials: ${SUPERVISOR_TOKEN}
+          static_configs:
+            - targets:
+                - supervisor:80
+
+integrations:
+  agent:
+    enabled: true
